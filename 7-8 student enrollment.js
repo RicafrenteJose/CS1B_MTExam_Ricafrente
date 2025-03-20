@@ -1,40 +1,43 @@
+// Create empty arrays to store student names for each subject
 let DSA = [];
 let WebDev = [];
+
+// Declare variables for the selected subject and the list of students
 let subject, students;
 
-while (true) {
+while (true) { // Infinite loop, runs until 'Exit' is chosen
+    // Ask the user to choose a subject and convert the input to lowercase
     subject = prompt("Choose subject (A) DSA, (B) WebDev:").toLowerCase();
-    students = subject === 'a' ? DSA : WebDev;
     
+    // Use an if...else statement instead of a ternary operator
+    if (subject === 'a') {
+        students = DSA;
+    } else {
+        students = WebDev;
+    }
+
+    // Ask the user what action they want to perform
     let action = prompt("(A) Enroll, (B) Unenroll, (C) Change Subject, (D) Exit:").toLowerCase();
 
-    if (action === 'a') {
-        let name = prompt("Enter student name:");
-        students.push(name);
+    if (action === 'a') { // If the user chooses to enroll a student
+        let name = prompt("Enter student name:"); // Ask for the student's name
+        students.push(name); // Add the name to the selected subject's list
     } 
-    else if (action === 'b') {
-        if (students.length === 0) {
-            alert("No students enrolled.");
+    else if (action === 'b') { // If the user chooses to unenroll a student
+        if (students.length === 0) { // Check if the list is empty
+            alert("No students enrolled."); // Show a message if no students are in the list
         } else {
-            let name = prompt("Enter student name to remove:");
-            let newList = [];
+            let name = prompt("Enter student name to remove:"); // Ask for the student's name to remove
             
-            for (let i = 0; i < students.length; i++) {
-                if (students[i] !== name) {
-                    newList.push(students[i]); // Copy all names except the one to remove
-                }
-            }
-            
-            students.length = 0; // Clear original array
-            for (let i = 0; i < newList.length; i++) {
-                students.push(newList[i]); // Copy back only the remaining names
-            }
+            // Use filter() to create a new array without the removed student
+            students = students.filter(student => student !== name);
         }
     } 
-    else if (action === 'c') {
-        continue; // Go back to subject selection
+    else if (action === 'c') { // If the user wants to change subjects
+        continue; // Restart the loop, allowing the user to pick a new subject
     } 
-    else if (action === 'd') {
+    else if (action === 'd') { // If the user wants to exit
+        // Show the final list of students in both subjects
         alert("DSA: " + DSA + "\nWebDev: " + WebDev);
         break; // Exit the loop
     }
