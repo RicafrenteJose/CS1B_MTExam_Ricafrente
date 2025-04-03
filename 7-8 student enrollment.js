@@ -8,8 +8,7 @@ let subject, students;
 while (true) { // Infinite loop, runs until 'Exit' is chosen
     // Ask the user to choose a subject and convert the input to lowercase
     subject = prompt("Choose subject (A) DSA, (B) WebDev:").toLowerCase();
-    
-    // Use an if...else statement instead of a ternary operator
+   
     if (subject === 'a') {
         students = DSA;
     } else {
