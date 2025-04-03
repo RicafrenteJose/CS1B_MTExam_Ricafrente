@@ -16,16 +16,22 @@ if (createList.toLowerCase() === "y") {
     // Loop to get each item from the user
     for (let i = 0; i < numItems; i++) {
         // Ask the user to enter an item
-        let item = prompt("Enter item : "); 
+        let item = prompt("Enter item: "); 
         // Add the item to the grocery list
         groceryList.push(item);
     }
+
+    // Create an alphabetically sorted copy of the grocery list
+    let sortedList = groceryList.slice().sort(); // slice() makes a copy, sort() sorts it alphabetically
 
     // Create a reversed copy of the grocery list
     let reversedList = groceryList.slice().reverse(); // slice() makes a copy
 
     // Show the original grocery list to the user
     alert("Grocery List: " + groceryList);
+    
+    // Show the sorted grocery list to the user
+    alert("Sorted Grocery List: " + sortedList);
     
     // Show the reversed grocery list to the user
     alert("Reversed Grocery List: " + reversedList);
